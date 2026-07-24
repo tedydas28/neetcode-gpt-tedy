@@ -8,7 +8,8 @@ class Solution:
         # Normalize x, then scale by gamma
         # Return result rounded to 4 decimal places as a list
         x_sq = np.square(x)
-        rms = np.sqrt(np.mean(x_sq)+eps)
+        x_sq_mean = np.mean(x_sq)
+        rms = np.sqrt(x_sq_mean + eps)
         x_norm = x/rms
         output = gamma*x_norm
         return np.round(output, 4)
