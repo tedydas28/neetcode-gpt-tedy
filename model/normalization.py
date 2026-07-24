@@ -12,6 +12,8 @@ class Solution:
         # Scale and shift: out = gamma * x_hat + beta
         # return np.round(your_answer, 5)
         eps = 1e-5
-        x_hat = (x - np.mean(x)) / np.sqrt(np.var(x) + eps)
+        mean = np.mean(x)
+        var = np.var(x)
+        x_hat = (x - mean) / np.sqrt(var + eps)
         out = gamma * x_hat + beta
         return np.round(out, 5)
