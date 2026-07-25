@@ -8,7 +8,7 @@ class Solution:
     def compute_activation_stats(self, model: nn.Module, x: torch.Tensor) -> List[Dict[str, float]]:
         # Forward pass through model layer by layer
         # After each nn.Linear, record: mean, std, dead_fraction
-        # Run with torch.no_grad(). Round to 4 decimals.
+        # Run with torch.no_grad(). 
         stats = []
         with torch.no_grad():
             for module in model.children():
@@ -29,7 +29,7 @@ class Solution:
     def compute_gradient_stats(self, model: nn.Module, x: torch.Tensor, y: torch.Tensor) -> List[Dict[str, float]]:
         # Forward + backward pass with nn.MSELoss
         # For each nn.Linear layer's weight gradient, record: mean, std, norm
-        # Call model.zero_grad() first. Round to 4 decimals.
+        # Call model.zero_grad() first.
         model.zero_grad()
         output = model(x)
         loss = nn.MSELoss()(output, y)
